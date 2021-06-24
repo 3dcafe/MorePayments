@@ -16,7 +16,7 @@ namespace MorePayments.Payment.Alfabank
     /// Сервис(Репозиторий) для работы с Альфа банком
     /// Документация - https://pay.alfabank.ru/ecommerce/instructions/merchantManual/pages/prod_environment.html
     /// </summary>
-    public class AlfabankService
+    public class AlfabankService: IPayment
     {
         /// <summary>
         /// Если в заказе передать дополнительный параметр с именем merchantOrderId, то именно его значение будет передано в
