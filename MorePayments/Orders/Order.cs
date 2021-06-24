@@ -24,6 +24,5 @@ namespace MorePayments.Orders
         /// Идентификатор пользователя
         /// </summary>
         public string userId { get; set; }
-        public OrderCurrency OrderCurrency { get; set; }
     }
 }

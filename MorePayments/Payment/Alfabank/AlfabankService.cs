@@ -69,9 +69,9 @@ namespace MorePayments.Payment.Alfabank
         /// <summary>
         /// Регистрация заказа
         /// </summary>
-        public AlfabankRegisterResponse Register(Order order, string description, Func<OrderCurrency, float> getCurrencyRate, string returnUrl, string failUrl)
+        public AlfabankRegisterResponse Register(Order order, string description, string returnUrl, string failUrl)
         {
-            var sum = (int)(Math.Round(order.Sum * getCurrencyRate(order.OrderCurrency), 2) * 100);
+            var sum = (int)(Math.Round(order.Sum, 2) * 100);
 
             int retriesNum = 0;
             string orderStrId;
