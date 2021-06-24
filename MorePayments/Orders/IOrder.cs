@@ -9,11 +9,11 @@ namespace MorePayments.Orders
         /// <summary>
         /// Платежный идентификатор
         /// </summary>
-        int OrderID { get; set; }
+        string OrderID { get; set; }
         /// <summary>
         /// Платежный номер
         /// </summary>
-        string Number { get; set; }
+        int Number { get; set; }
         /// <summary>
         /// Полная сумма
         /// </summary>

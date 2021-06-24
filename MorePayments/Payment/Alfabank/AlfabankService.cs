@@ -92,7 +92,9 @@ namespace MorePayments.Payment.Alfabank
                     {"orderNumber", orderStrId},
                     {"amount", sum.ToString(CultureInfo.InvariantCulture)},    // Сумма платежа в копейках (или центах)
                     //{"currency", ""}, // ISO 4217
-                    {"returnUrl", string.Format("{0}{1}", returnUrl, string.Format("{0}{1}={2}", (returnUrl.Contains("?") ? "&" : "?"), ReturnUrlParamNameMerchantOrder, HttpUtility.UrlEncode(order.Number)))},
+                    {"returnUrl", string.Format("{0}{1}", returnUrl, 
+                                  string.Format("{0}{1}={2}", (returnUrl.Contains("?") ? "&" : "?"), 
+                                                ReturnUrlParamNameMerchantOrder, HttpUtility.UrlEncode(order.Number.ToString())))},
                     {"failUrl", failUrl},
                     //{"pageView", "DESKTOP"}, // "MOBILE"
                     {"clientId", order.userId},
