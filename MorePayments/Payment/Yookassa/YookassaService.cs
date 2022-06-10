@@ -26,6 +26,7 @@ namespace MorePayments.Payment.Yookassa
         public async Task<YookassaResponse> CreatePaymentAsync(YookassaPayment data,string IdempotenceKey)
         {
             HttpSimpleClientRepository client = new(_shopId.ToString(), _secretKey);
+            client.Headers.Add("Idempotence-Key", IdempotenceKey);
             string url = $"https://api.yookassa.ru/v3/payments";
             var obj = await client.PostAsync<YookassaResponse>(url, data);
             if (obj == null) return null;
