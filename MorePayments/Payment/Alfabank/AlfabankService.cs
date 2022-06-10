@@ -1,13 +1,13 @@
 ﻿using MorePayments.Diagnostics;
 using MorePayments.Extensions;
 using MorePayments.Orders;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.Json;
 using System.Web;
 
 namespace MorePayments.Payment.Alfabank
@@ -115,7 +115,7 @@ namespace MorePayments.Payment.Alfabank
                 if (!success)
                 {
                     Debug.Log.Info(string.Format("AlfabankService Register. code: {0} error: {1}, obj: {2}",
-                                                    response.ErrorCode, response.ErrorMessage, JsonConvert.SerializeObject(response)));
+                                                    response.ErrorCode, response.ErrorMessage, JsonSerializer.Serialize(response)));
                 }
                 retriesNum++;
             } while (response.ErrorCode == 1 && retriesNum < 20);
@@ -149,7 +149,7 @@ namespace MorePayments.Payment.Alfabank
             if (!success)
             {
                 Debug.Log.Info(string.Format("AlfabankService GetOrderStatus. code: {0} error: {1}, obj: {2}",
-                                                response.ErrorCode, response.ErrorMessage, JsonConvert.SerializeObject(response)));
+                                                response.ErrorCode, response.ErrorMessage, JsonSerializer.Serialize(response)));
             }
 
             return response;
@@ -205,7 +205,7 @@ namespace MorePayments.Payment.Alfabank
                     }
                 }
 
-                var dataAnswer = JsonConvert.DeserializeObject<T>(responseContent);
+                var dataAnswer = JsonSerializer.Deserialize<T>(responseContent);
 
                 return dataAnswer;
             }
