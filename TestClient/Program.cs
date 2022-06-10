@@ -16,12 +16,14 @@ var data = await service.CreatePaymentAsync
             return_url = "https://3dcafe.ru",
             type = "redirect"
         },
-        description = "Тестовый платеж",
+        description = Guid.NewGuid().ToString(),
         payment_method_data = new MorePayments.Payment.Yookassa.YookassaPaymentMethodData()
         {
              type = "bank_card"
         } 
     }, Guid.NewGuid().ToString()
 );
+Console.WriteLine("Payment Created");
 
-string str = "";
+
+#warning Check payment

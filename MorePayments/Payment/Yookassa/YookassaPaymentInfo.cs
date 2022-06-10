@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MorePayments.Payment.Yookassa
 {
-#warning выпилить методату отсюда
-    public class Metadata
+    public class AuthorizationDetails
     {
+        public string rrn { get; set; }
+        public string auth_code { get; set; }
     }
 
-
-    public class YookassaResponse
+    public class YookassaPaymentInfo
     {
         public string id { get; set; }
         public string status { get; set; }
@@ -19,10 +17,11 @@ namespace MorePayments.Payment.Yookassa
         public YookassaRecipient recipient { get; set; }
         public YookassaPaymentMethod payment_method { get; set; }
         public DateTime created_at { get; set; }
-        public YookassaConfirmation confirmation { get; set; }
+        public DateTime expires_at { get; set; }
         public bool test { get; set; }
         public bool paid { get; set; }
         public bool refundable { get; set; }
         public Metadata metadata { get; set; }
+        public AuthorizationDetails authorization_details { get; set; }
     }
 }
