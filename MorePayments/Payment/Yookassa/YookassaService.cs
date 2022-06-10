@@ -29,8 +29,25 @@ namespace MorePayments.Payment.Yookassa
             client.Headers.Add("Idempotence-Key", IdempotenceKey);
             string url = $"https://api.yookassa.ru/v3/payments";
             var obj = await client.PostAsync<YookassaResponse>(url, data);
+#warning check on status 200 validate
             if (obj == null) return null;
             if (obj.Response == null) return null;
+            return obj.Response;
+        }
+
+        /// <summary>
+        /// Create payment and get link for payment
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="IdempotenceKey"></param>
+        /// <returns></returns>
+        public async Task<YookassaPaymentInfo> GetPaymentAsync(string paymentId)
+        {
+            HttpSimpleClientRepository client = new(_shopId.ToString(), _secretKey);
+            string url = $"https://api.yookassa.ru/v3/payments/{paymentId}";
+            var obj = await client.GetAsync<YookassaPaymentInfo>(url);
+#warning check on status 200 validate
+            if (obj == null) return null;
             if (obj.Response == null) return null;
             return obj.Response;
         }

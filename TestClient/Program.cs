@@ -24,6 +24,12 @@ var data = await service.CreatePaymentAsync
     }, Guid.NewGuid().ToString()
 );
 Console.WriteLine("Payment Created");
-
-
-#warning Check payment
+var info = await service.GetPaymentAsync(data.id);
+if(info.paid)
+{
+    Console.WriteLine(info.paid);
+}
+else
+{
+    Console.WriteLine("pls set breakpoint for paid");
+}
